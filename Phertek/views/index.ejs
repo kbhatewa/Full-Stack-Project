@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <%- include('partials/header') %>
+    <main>
+      <% if (error && error.length) { %>
+        <div class="flash-box flash-error">
+          <span><%= error[0] %></span>
+          <button class="flash-close" onclick="this.parentElement.style.display='none';">&times;</button>
+        </div>
+      <% } %>
+      
+      <% if (success && success.length) { %>
+        <div class="flash-box flash-success">
+          <span><%= success[0] %></span>
+          <button class="flash-close" onclick="this.parentElement.style.display='none';">&times;</button>
+        </div>
+      <% } %>   
+        <h1>Welcome to Phertek!</h1>
+        <p>Phertek is a health and finance digital product company dedicated to empowering individuals and businesses through innovative solutions and professional opportunities.</p>
+        <p>For businesses, Phertek offers custom digital products designed to streamline operations in the healthcare and financial sectors, enhancing efficiency and accessibility.</p>
+        <p>At Phertek, our mission is to bridge the gap between technology, finance, and healthcare—ensuring that businesses thrive while individuals gain the resources and opportunities they need to succeed.</p>
+        <p>Join us at one of our upcoming events to learn more about our products and services, network with industry professionals, and discover new opportunities for growth and development.</p>
+        <h2>Our Events</h2>
+        <p>Phertek offers four distinct event categories: Volunteer Events, Paid Events, Community Events, and Professional Events.</p>
+        <p>Our events are designed to provide valuable resources, networking opportunities, and professional development for individuals and businesses in the healthcare and financial sectors.</p>
+        <p>Register for an event today and take the first step toward a brighter future with Phertek!</p>
+    </main>
+    <%- include('partials/footer') %>
+</body>
+<script>
+  setTimeout(() => {
+    const flash = document.querySelector('.flash-box');
+    if (flash) flash.style.display = 'none';
+  }, 4000);
+</script>
+</html>

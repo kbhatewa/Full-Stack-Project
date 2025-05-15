@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <%- include('partials/header') %>
+    <main>
+                   
+        <h1>Events</h1>
+
+        <!-- Search Form -->
+        <form action="/events" method="GET">
+            <input type="text" name="search" placeholder="Search events..." value="<%= typeof searchQuery !== 'undefined' ? searchQuery : '' %>" required>
+            <button type="submit"><i class="fas fa-search"></i> Search</button>
+        </form>
+        
+
+        <!-- Show search query message -->
+        <!-- <% if (searchQuery && searchQuery.trim() !== '') { %>
+            <p>Showing results for: "<%= searchQuery %>"</p>
+        <% } %> -->
+
+        <!-- Display Events -->
+        <% if (events.length > 0) { %>
+            <% categories.forEach(category => { %>
+                <section>
+                    <h2><%= category %> Events</h2>
+                    <ul>
+                        <% events.filter(event => event.category === category).forEach(event => { %>
+                            <li><a href="/events/<%= event.id %>"><%= event.title %></a></li>
+                        <% }) %>
+                    </ul>
+                </section>
+            <% }) %>
+        <% } else { %>
+            <p>No events found.</p>
+        <% } %>
+
+    </main>
+    <%- include('partials/footer') %>
+</body>
+</html>

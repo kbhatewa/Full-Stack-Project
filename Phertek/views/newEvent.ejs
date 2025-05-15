@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Event</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <%- include('partials/header') %>
+    <main>
+        <h1>New Event</h1>
+        <section>
+            <h2>Add a New Event</h2>
+            <form action="/events" method="POST" enctype="multipart/form-data">
+                <label for="category">Category:</label>
+                <select id="category" name="category" required>
+                    <option value="">--Select a Category--</option>
+                    <option value="Volunteer">Volunteer</option>
+                    <option value="Paid">Paid</option>
+                    <option value="Community">Community</option>
+                    <option value="Professional">Professional</option>
+                    <option value="Other">Other</option>
+                </select>
+                <label for="title">Title:</label>
+                <input type="text" id="title" name="title" placeholder="Add an Event Title" required>
+                <label for="host">Host:</label>
+                <input type="text" id="hostName" name="hostName" placeholder="Add a Host" required>
+                <label for="startDate">Start:</label>
+                <input type="datetime-local" id="startDate" name="startDate" required>
+                <label for="endDate">End:</label>
+                <input type="datetime-local" id="endDate" name="endDate" required>
+                <label for="details">Details:</label>
+                <textarea id="details" name="details" required>Add a Description</textarea>
+                <label for="location">Location:</label>
+                <input type="text" id="location" name="location" placeholder="Add a Location" required>
+                <label for="image">Image:</label>
+                <input type="file" id="image" name="image" required>
+                <button type="submit">Submit</button>
+            </form>
+        </section>
+    </main>
+    <%- include('partials/footer') %>
+    
+    <script>
+        // Add an event listener for form submission
+        document.getElementById('newEventForm').addEventListener('submit', function(event) {
+            // Get startDate and endDate values
+            const startDate = document.getElementById('startDate').value;
+            const endDate = document.getElementById('endDate').value;
+
+            // Check if the dates are in the correct format (YYYY-MM-DDTHH:MM)
+            if (!startDate || !endDate) {
+                event.preventDefault(); // Prevent form submission if date is missing
+                alert('Please select valid start and end dates.');
+                return;
+            }
+
+            console.log('Start Date:', startDate); // Log the start date for debugging
+            console.log('End Date:', endDate);   // Log the end date for debugging
+
+            // Optional: Ensure dates are in the correct format (already handled by datetime-local)
+            // If you need to modify them further, you can do so here (but it's not required for datetime-local input)
+
+        });
+
+        // Image preview functionality (optional)
+        document.getElementById("image").addEventListener("change", function(event) {
+            const preview = document.getElementById("imagePreview");
+            const file = event.target.files[0];
+            const reader = new FileReader();
+
+            reader.onload = function() {
+                preview.src = reader.result;
+                preview.style.display = 'block'; // Show image preview
+            };
+
+            reader.readAsDataURL(file);
+        });
+    </script>
+    <img id="imagePreview" src="" alt="Image Preview" style="display:none; max-width: 200px; max-height: 200px;">
+</body>
+</html>

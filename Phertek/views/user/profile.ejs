@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Your Profile</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+    <%- include('../partials/header') %>
+
+        <main>
+            <% if (error && error.length) { %>
+                <div class="flash-box flash-error">
+                  <span><%= error[0] %></span>
+                  <button class="flash-close" onclick="this.parentElement.style.display='none';">&times;</button>
+                </div>
+              <% } %>
+              
+              <% if (success && success.length) { %>
+                <div class="flash-box flash-success">
+                  <span><%= success[0] %></span>
+                  <button class="flash-close" onclick="this.parentElement.style.display='none';">&times;</button>
+                </div>
+              <% } %>
+
+            <h2>Welcome, <%= user.name %>!</h2>
+            <h3>Your Events:</h3>
+
+                            <% if (events.length===0) { %>
+                                <p>No events created yet.</p>
+                                <% } else { %>
+                                    <ul>
+                                        <% events.forEach(event=> { %>
+                                            <li>
+                                                <strong>
+                                                    <%= event.title %>
+                                                </strong> - <%= new Date(event.startDate).toDateString() %> to <%= new
+                                                        Date(event.endDate).toDateString() %><br>
+                                                        <% if (user && event.host &&
+                                                            user._id.toString()===event.host.toString()) { %>
+                                                                <form action="/events/<%= event._id %>/edit" method="GET" style="display:inline;">
+                                                                    <button type="submit">Edit</button>
+                                                                </form>
+                                                            <form action="/events/<%= event._id %>?_method=DELETE"
+                                                                method="POST" style="display:inline;">
+                                                                <button type="submit">Delete</button>
+                                                            </form>
+                                                            <% } %>
+                                            </li>
+                                            <% }) %>
+                                    </ul>
+                                    <% } %>
+                                    
+                                    <h3>Your RSVPs:</h3>
+
+                                        <% if (!rsvps || rsvps.length===0) { %>
+                                            <p>No RSVPs made yet.</p>
+                                            <% } else { %>
+                                                <ul>
+                                                    <% rsvps.forEach(rsvp=> { %>
+                                                        <li>
+                                                            <strong>Event:</strong>
+                                                            <%= rsvp.event ? rsvp.event.title : '[Deleted Event]' %>
+                                                                <br>
+                                                                <strong>Status:</strong>
+                                                                <%= rsvp.status %> <br>
+                                                                    <strong>Date:</strong>
+                                                                    <%= rsvp.event ? new
+                                                                        Date(rsvp.event.startDate).toDateString() : ''
+                                                                        %>
+                                                        </li>
+                                                        <% }) %>
+                                                </ul>
+                                                <% } %>
+
+        </main>
+        <%- include('../partials/footer') %>
+</body>
+<script>
+    setTimeout(() => {
+      const flash = document.querySelector('.flash-box');
+      if (flash) flash.style.display = 'none';
+    }, 4000);
+</script>
+  
+</html>

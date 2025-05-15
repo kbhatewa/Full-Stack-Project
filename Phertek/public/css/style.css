@@ -1,0 +1,281 @@
+/* General styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f4f7f8; 
+    color: #333;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    text-align: left;
+}
+
+/* Header styles */
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #005f73; 
+    color: white;
+    width: 100%;
+    padding: 10px 0;
+}
+
+.user-navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    padding-bottom: 10px;
+}
+
+.user-navigation .logo {
+    flex-grow: 1;
+}
+
+.logo img {
+    max-width: 100px;
+    height: auto;
+    margin-top: 15px;
+}
+
+.user-navigation a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    margin-left: 15px;
+}
+
+.main-navigation {
+    width: 90%;
+    display: flex;
+    justify-content: flex-start;
+    padding-bottom: 10px;
+    margin-left: 30px;
+}
+
+.main-navigation a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* Centering main content */
+main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content: center;
+    width: 80%;
+    margin: 40px auto;
+}
+
+h1, h2 {
+    color: #005f73;
+    text-align: left;
+    width: 100%;
+}
+
+section {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+/* New Event Page Styles */
+form {
+    display: grid;
+    grid-template-columns: .3fr 2fr;
+    gap: 10px;
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 100%;    
+}
+
+label {
+    text-align: left;
+    padding-right: 10px;
+    font-weight: bold;
+    align-self: center; 
+}
+
+input, select, textarea {
+    max-width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-family: Arial, sans-serif; 
+    font-size: 14px; 
+    color: #666; 
+    background-color: #fff; 
+}
+
+textarea {
+    height: 100px;
+}
+
+button {
+    grid-column: span 2;
+    background-color: #005f73;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button {
+    background-color: #005f73;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;    
+}
+
+button:hover {
+    background-color: #003d4d;
+}
+
+/* Event Details Page Styles */
+#event-detail {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#event-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.event-detail {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.event-detail img {
+    width: 500px;
+    height: auto;
+    border-radius: 8px;
+}
+
+.event-info {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Footer styles */
+footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #005f73;
+    color: white;
+    width: 100%;
+    padding: 20px;
+    position: static;
+    bottom: 0;
+}
+
+.footer-links, .social-media {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+}
+
+.footer-links a, .social-media a {
+    color: white;
+    text-decoration: none;
+}
+
+.footer-links a:hover, .social-media a:hover {
+    color: #e9d8a6;
+}
+
+.footer-links {
+    justify-content: flex-start;
+}
+
+.social-media {
+    justify-content: flex-end;
+}
+
+.flash-box {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    min-width: 300px;
+    max-width: 500px;
+    padding: 15px 20px;
+    border-radius: 6px;
+    font-weight: bold;
+    color: #fff;
+    z-index: 9999;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .flash-success {
+    background-color: #28a745;
+  }
+  
+  .flash-error {
+    background-color: #dc3545;
+  }
+  
+  .flash-close {
+    background: none;
+    border: none;
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+    margin-left: 15px;
+  }
+  
+
+.btn {
+    padding: 8px 16px;
+    border: none;
+    margin-right: 8px;
+    color: white;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .btn-yes {
+    background-color: #28a745;
+  }
+  
+  .btn-no {
+    background-color: #dc3545; 
+  }
+  
+  .btn-maybe {
+    background-color: #ffc107; 
+    color: black;
+  }
+  

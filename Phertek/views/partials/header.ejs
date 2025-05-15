@@ -1,0 +1,20 @@
+<header>
+    <nav class="user-navigation">
+        <a href="/" class="logo">
+            <img src="/images/logo.jpg" alt="Logo">
+        </a>
+
+        <% if (!user) { %>
+            <a href="/user/login">Log In</a>
+            <a href="/user/new">Sign Up</a>
+        <% } else { %>
+            <a href="/events/new">New Event</a>
+            <a href="/user/profile">Profile (<%= user.name %>)</a>
+            <a href="/user/logout">Logout</a>
+        <% } %>
+    </nav>
+
+    <nav class="main-navigation">
+        <a href="/events">Events</a>
+    </nav>        
+</header>
